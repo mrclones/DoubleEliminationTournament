@@ -164,7 +164,12 @@ function createTournament(sheet, playersData) {
     var offset = 2 ** round - 2;
     var space = 2 ** (round + 1) -2;
     var iteration = 1;
-    for (var i = 1; i <= numberOfPlayers / round; i += 2) {
+    if (round === 1) {
+      var numberOfBrackets = numberOfPlayers;
+    } else {
+      var numberOfBrackets = numberOfPlayers / (2 * (round - 1));
+    }
+    for (var i = 1; i <= numberOfBrackets; i += 2) {
       if (round !== rounds) {
         if (iteration % 2 === 0) {
           var orientation = "down";
